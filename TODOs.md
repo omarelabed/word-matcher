@@ -2,11 +2,11 @@
 Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, welche in 3 Tabs angeordnet werden:
 
 ## Erfassen
-- [ ] Wortpaare alphabetisch sortiert auflisten
+- [x] Wortpaare alphabetisch sortiert auflisten
 - [ ] Wortpaare hinzufügen/bearbeiten/löschen
 - [ ] Button um Beispieldaten einzufüllen
 - [ ] Button um alles zurückzusetzen
-- [ ] Bonus: Die Liste der Worpaare können für beide Sprachen sortiert werden
+- [x] Bonus: Die Liste der Worpaare können für beide Sprachen sortiert werden
 - [ ] Bonus: Wortliste persistieren (LocalStorage)
 
 ## Trainieren
