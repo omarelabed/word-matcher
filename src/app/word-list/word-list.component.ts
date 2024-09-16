@@ -1,44 +1,84 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { WordMatch } from '../word-match';
+import { WordMatchService } from '../word-match.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-word-list',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatSortModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatIconModule,
+  ],
   templateUrl: './word-list.component.html',
+  styleUrls: ['./word-list.component.scss'],
 })
 export class WordListComponent {
+
   wordMatches: WordMatch[] = [];
   dataSource: MatTableDataSource<WordMatch>;
+  
+  wordAHeader = 'Wort 1';
+  wordBHeader = 'Wort 2';
+  
+  newWordA = '';
+  newWordB = '';
+
+  displayedColumns: string[] = ['wordA', 'wordB', 'actions'];
+  wordMatchService = inject(WordMatchService);
 
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  displayedColumns: string[] = ['language1', 'language2'];
-
-  language1 = { key: 'de', name: 'German' };
-  language2 = { key: 'it', name: 'Italian' };
 
   constructor() {
-    this.wordMatches = [
-      { language1: 'Hund', language2: 'Cane' },
-      { language1: 'Katze', language2: 'Gatto' },
-      { language1: 'Maus', language2: 'Topo' },
-      { language1: 'Pferd', language2: 'Cavallo' },
-      { language1: 'Schaf', language2: 'Pecora' },
-      { language1: 'Kuh', language2: 'Mucca' },
-      { language1: 'Ziege', language2: 'Capra' },
-      { language1: 'Huhn', language2: 'Pollo' },
-      { language1: 'Ente', language2: 'Anatra' },
-      { language1: 'Schwein', language2: 'Maiale' },
-    ].sort((a, b) => a.language1.localeCompare(b.language1));
-
+    this.wordMatches = this.wordMatchService.getAllWordMatches();
     this.dataSource = new MatTableDataSource(this.wordMatches);
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  onNewWordMatchSubmit(wordMatch: WordMatch) {
+    this.wordMatchService.addWordMatch(wordMatch);
+    this.dataSource = new MatTableDataSource(
+      this.wordMatchService.getAllWordMatches()
+    );
+  }
+
+  deleteWordMatch(wordMatch: WordMatch) {
+    this.wordMatchService.deleteWordMatch(wordMatch);
+    this.dataSource = new MatTableDataSource(
+      this.wordMatchService.getAllWordMatches()
+    );
+  }
+
+  updateWordMatch(oldWordMatch: WordMatch, newWordMatch: WordMatch) {
+    this.wordMatchService.updateWordMatch(oldWordMatch, newWordMatch);
+    this.dataSource = new MatTableDataSource(
+      this.wordMatchService.getAllWordMatches()
+    );
+  }
+
+  toggleEditMode({wordA, wordB}: WordMatch) {
+    this.wordMatches.map((wm) => {
+      if (wm.wordA === wordA && wm.wordB === wordB) {
+        wm.editMode = !wm.editMode;
+      }
+      return wm;
+    });
   }
 }

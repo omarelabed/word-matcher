@@ -1,16 +1,75 @@
+<form
+  class="add-word-match-form"
+  #addWordMatchForm="ngForm"
+  (ngSubmit)="onNewWordMatchSubmit(addWordMatchForm.value)"
+>
+  <mat-form-field>
+    <mat-label>Neues Wort 1</mat-label>
+    <input matInput name="wordA" ngModel required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Neues Wort 2</mat-label>
+    <input matInput name="wordB" ngModel required />
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">Hinzufügen</button>
+</form>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-  <ng-container matColumnDef="language1">
+  <ng-container matColumnDef="wordA">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      {{ language1.name }}
+      {{ wordAHeader }}
     </th>
-    <td mat-cell *matCellDef="let wordMatch">{{ wordMatch.language1 }}</td>
+    <td mat-cell *matCellDef="let wordMatch" [ngClass]="{ 'edit-mode': wordMatch.editMode }">
+      <mat-form-field *ngIf="wordMatch.editMode; else wordA">
+        <input matInput [(ngModel)]="wordMatch.wordA" />
+      </mat-form-field>
+      <ng-template #wordA>
+        {{ wordMatch.wordA }}
+      </ng-template>
+    </td>
   </ng-container>
-  <ng-container matColumnDef="language2">
+
+  <ng-container matColumnDef="wordB">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-      {{ language2.name }}
+      {{ wordBHeader }}
     </th>
-    <td mat-cell *matCellDef="let wordMatch">{{ wordMatch.language2 }}</td>
+    <td mat-cell *matCellDef="let wordMatch" [ngClass]="{ 'edit-mode': wordMatch.editMode }">
+      <mat-form-field *ngIf="wordMatch.editMode; else wordB">
+        <input matInput [(ngModel)]="wordMatch.wordB" />
+      </mat-form-field>
+      <ng-template #wordB>
+        {{ wordMatch.wordB }}
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let wordMatch">
+      <button mat-icon-button (click)="toggleEditMode(wordMatch)">
+        <mat-icon *ngIf="wordMatch.editMode; else editIcon">save</mat-icon>
+        <ng-template #editIcon>
+          <mat-icon>edit</mat-icon>
+        </ng-template>
+      </button>
+      <button
+        mat-icon-button
+        *ngIf="wordMatch.editMode"
+        (click)="toggleEditMode(wordMatch)"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        *ngIf="!wordMatch.editMode"
+        (click)="deleteWordMatch(wordMatch)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<div style="margin-bottom: 64px"></div>
