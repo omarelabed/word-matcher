@@ -31,8 +31,8 @@ export class WordListComponent {
   wordMatches: WordMatch[] = [];
   dataSource: MatTableDataSource<WordMatch>;
   
-  wordAHeader = 'Wort 1';
-  wordBHeader = 'Wort 2';
+  wordAHeader = 'Deutsch';
+  wordBHeader = 'Italienisch';
   
   newWordA = '';
   newWordB = '';
@@ -53,6 +53,9 @@ export class WordListComponent {
   }
 
   onNewWordMatchSubmit(wordMatch: WordMatch) {
+    if (wordMatch.wordA === '' || wordMatch.wordB === '') {
+      return;
+    }
     this.wordMatchService.addWordMatch(wordMatch);
     this.dataSource = new MatTableDataSource(
       this.wordMatchService.getWordMatches()

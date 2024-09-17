@@ -69,8 +69,6 @@ export class ExerciseComponent {
   openSnackBar(message: string, action: string, options: any = {}) {
     this.snackBarRef.open(message, action, {
       duration: 2000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
       ...options,
     });
   }
