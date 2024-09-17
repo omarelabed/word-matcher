@@ -5,7 +5,7 @@ Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, we
 - [x] Wortpaare alphabetisch sortiert auflisten
 - [x] Wortpaare hinzufügen/bearbeiten/löschen
 - [x] Button um Beispieldaten einzufüllen
-- [ ] Button um alles zurückzusetzen
+- [x] Button um alles zurückzusetzen
 - [x] Bonus: Die Liste der Worpaare können für beide Sprachen sortiert werden
 - [ ] Bonus: Wortliste persistieren (LocalStorage)
 

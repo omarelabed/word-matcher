@@ -1,5 +1,9 @@
-<button mat-flat-button color="primary" (click)="addExampleData()" class="add-example-data-button">
+<button mat-flat-button color="primary" (click)="addExampleData()" class="table-data-button">
   Beispieldaten hinzufügen
+</button>
+
+<button mat-flat-button color="primary" (click)="resetData()" class="table-data-button">
+  Daten zurücksetzen
 </button>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>

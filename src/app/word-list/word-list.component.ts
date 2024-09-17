@@ -88,4 +88,11 @@ export class WordListComponent {
       this.wordMatchService.getAllWordMatches()
     );
   }
+
+  resetData() {
+    this.wordMatchService.resetData();
+    this.dataSource = new MatTableDataSource(
+      this.wordMatchService.getAllWordMatches()
+    );
+  }
 }

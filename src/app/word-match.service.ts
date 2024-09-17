@@ -61,7 +61,14 @@ export class WordMatchService {
   }
 
   addExampleData() {
+    if (this.wordMatches.length > 0) {
+      return;
+    }
     this.wordMatches = this.getDefaultWordMatches();
     this.wordMatches.sort(this.sortAlphabeticallyByWordA);
+  }
+
+  resetData() {
+    this.wordMatches = [];
   }
 }
