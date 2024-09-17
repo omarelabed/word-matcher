@@ -11,7 +11,7 @@ export class WordMatchService {
     this.wordMatches = JSON.parse(localStorage.getItem('wordMatches') || '[]');
   }
 
-  getAllWordMatches(): WordMatch[] {
+  getWordMatches(): WordMatch[] {
     return this.wordMatches;
   }
 

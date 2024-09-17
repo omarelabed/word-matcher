@@ -44,7 +44,7 @@ export class WordListComponent {
 
 
   constructor() {
-    this.wordMatches = this.wordMatchService.getAllWordMatches();
+    this.wordMatches = this.wordMatchService.getWordMatches();
     this.dataSource = new MatTableDataSource(this.wordMatches);
   }
 
@@ -55,21 +55,21 @@ export class WordListComponent {
   onNewWordMatchSubmit(wordMatch: WordMatch) {
     this.wordMatchService.addWordMatch(wordMatch);
     this.dataSource = new MatTableDataSource(
-      this.wordMatchService.getAllWordMatches()
+      this.wordMatchService.getWordMatches()
     );
   }
 
   deleteWordMatch(wordMatch: WordMatch) {
     this.wordMatchService.deleteWordMatch(wordMatch);
     this.dataSource = new MatTableDataSource(
-      this.wordMatchService.getAllWordMatches()
+      this.wordMatchService.getWordMatches()
     );
   }
 
   updateWordMatch(oldWordMatch: WordMatch, newWordMatch: WordMatch) {
     this.wordMatchService.updateWordMatch(oldWordMatch, newWordMatch);
     this.dataSource = new MatTableDataSource(
-      this.wordMatchService.getAllWordMatches()
+      this.wordMatchService.getWordMatches()
     );
   }
 
@@ -85,14 +85,14 @@ export class WordListComponent {
   addExampleData() {
     this.wordMatchService.addExampleData();
     this.dataSource = new MatTableDataSource(
-      this.wordMatchService.getAllWordMatches()
+      this.wordMatchService.getWordMatches()
     );
   }
 
   resetData() {
     this.wordMatchService.resetData();
     this.dataSource = new MatTableDataSource(
-      this.wordMatchService.getAllWordMatches()
+      this.wordMatchService.getWordMatches()
     );
   }
 }

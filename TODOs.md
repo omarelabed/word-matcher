@@ -10,9 +10,9 @@ Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, we
 - [x] Bonus: Wortliste persistieren (LocalStorage)
 
 ## Trainieren
-- [ ] Es wird zufällig die eine oder andere Sprache abgefragt
-- [ ] Wörter werden zufällig ausgewählt
-- [ ] Nach falschen Antworten wird das korrekte Wort angezeigt
+- [x] Es wird zufällig die eine oder andere Sprache abgefragt
+- [x] Wörter werden zufällig ausgewählt
+- [x] Nach falschen Antworten wird das korrekte Wort angezeigt
 - [ ] Bonus: Falsch beantwortete Wörter werden häufiger wieder abgefragt
 
 ## Prüfung
