@@ -84,4 +84,11 @@ export class WordMatchService {
     this.wordMatches.sort(this.sortAlphabeticallyByWordA);
     localStorage.setItem('wordMatches', JSON.stringify(this.wordMatches));
   }
+
+  getRandomWordMatches(n: number): WordMatch[] {
+    const count = Math.min(n, this.wordMatches.length);
+    return this.wordMatches
+      .sort(() => 0.5 - Math.random())
+      .slice(0, count);
+  }
 }

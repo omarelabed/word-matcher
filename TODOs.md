@@ -16,16 +16,9 @@ Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, we
 - [ ] Bonus: Falsch beantwortete Wörter werden häufiger wieder abgefragt
 
 ## Prüfung
-- [ ] Während der Prüfung sind die Tabs Erfassen/Trainieren gesperrt
-- [ ] Es wird zufällig die eine oder andere Sprache abgefragt
-- [ ] Es werden in zufälliger Reihenfolge alle Wörter abgefragt
-- [ ] Nach der Prüfung wird das Prüfungsresultat und eine Statistik angezeigt
+- [x] Während der Prüfung sind die Tabs Erfassen/Trainieren gesperrt
+- [x] Es wird zufällig die eine oder andere Sprache abgefragt
+- [x] Es werden in zufälliger Reihenfolge alle Wörter abgefragt
+- [x] Nach der Prüfung wird das Prüfungsresultat und eine Statistik angezeigt
 - [ ] Bonus: Nötige Trefferquote und Anzahl der Wörter kann definiert werden
 - [ ] Bonus: Die Prüfungsdauer kann limitiert werden
-
-## Eigene Bonusideen
-- [ ] Case sensitive toggle (Trainieren, Prüfung)
-- [ ] Timer (Trainieren, Prüfung)
-- [ ] Statistiken (Trainieren, Prüfung)
-- [ ] Wortsuche (Erfassen)
-- [ ] Pagination (Erfassen)

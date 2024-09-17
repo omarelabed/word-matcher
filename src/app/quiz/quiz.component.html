@@ -1,0 +1,19 @@
+<main class="quiz-container">
+  <h1 *ngIf="getResult() !== null">{{ getResult() }}</h1>
+  <mat-card appearance="outlined">
+    <form (submit)="checkAnswer($event)" class="exercise-form" *ngIf="quizStarted">
+      <mat-card-content class="exercise-content">
+        <mat-form-field>
+          <mat-label>{{ getCurrentWord() }}</mat-label>
+          <input matInput type="text" autofocus />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-stroked-button type="submit">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  <button mat-flat-button (click)="startQuiz()" *ngIf="!quizStarted">
+    Start
+  </button>
+</main>
