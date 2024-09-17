@@ -22,7 +22,7 @@ import { Tab } from './tab';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'word-matcher';
+  title = 'Word Matcher';
   activeLink = 'manage';
   tabStateService = inject(TabStateService);
   tabs: Tab[] = [];
