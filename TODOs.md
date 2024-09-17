@@ -22,3 +22,10 @@ Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, we
 - [ ] Nach der Prüfung wird das Prüfungsresultat und eine Statistik angezeigt
 - [ ] Bonus: Nötige Trefferquote und Anzahl der Wörter kann definiert werden
 - [ ] Bonus: Die Prüfungsdauer kann limitiert werden
+
+## Eigene Bonusideen
+- [ ] Case sensitive toggle (Trainieren, Prüfung)
+- [ ] Timer (Trainieren, Prüfung)
+- [ ] Statistiken (Trainieren, Prüfung)
+- [ ] Wortsuche (Erfassen)
+- [ ] Pagination (Erfassen)
