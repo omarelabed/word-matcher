@@ -7,7 +7,9 @@ import { WordMatch } from './word-match';
 export class WordMatchService {
   wordMatches: WordMatch[] = [];
 
-  constructor() {}
+  constructor() {
+    this.wordMatches = JSON.parse(localStorage.getItem('wordMatches') || '[]');
+  }
 
   getAllWordMatches(): WordMatch[] {
     return this.wordMatches;
@@ -24,20 +26,26 @@ export class WordMatchService {
     }
     this.wordMatches.push(wordMatch);
     this.wordMatches.sort(this.sortAlphabeticallyByWordA);
+    this.setWordMatches(this.wordMatches);
   }
 
   deleteWordMatch(wordMatch: WordMatch): void {
-    this.wordMatches = this.wordMatches.filter(
-      ({ wordA: a, wordB: b }) => a !== wordMatch.wordA && b !== wordMatch.wordB
+    this.setWordMatches(
+      this.wordMatches.filter(
+        ({ wordA: a, wordB: b }) =>
+          a !== wordMatch.wordA && b !== wordMatch.wordB
+      )
     );
   }
 
   updateWordMatch(oldWordMatch: WordMatch, newWordMatch: WordMatch): void {
-    this.wordMatches = this.wordMatches.map((wordMatch) =>
-      wordMatch.wordA === oldWordMatch.wordA &&
-      wordMatch.wordB === oldWordMatch.wordB
-        ? newWordMatch
-        : wordMatch
+    this.setWordMatches(
+      this.wordMatches.map((wordMatch) =>
+        wordMatch.wordA === oldWordMatch.wordA &&
+        wordMatch.wordB === oldWordMatch.wordB
+          ? newWordMatch
+          : wordMatch
+      )
     );
   }
 
@@ -64,11 +72,16 @@ export class WordMatchService {
     if (this.wordMatches.length > 0) {
       return;
     }
-    this.wordMatches = this.getDefaultWordMatches();
-    this.wordMatches.sort(this.sortAlphabeticallyByWordA);
+    this.setWordMatches(this.getDefaultWordMatches());
   }
 
   resetData() {
-    this.wordMatches = [];
+    this.setWordMatches([]);
+  }
+
+  setWordMatches(wordMatches: WordMatch[]) {
+    this.wordMatches = wordMatches;
+    this.wordMatches.sort(this.sortAlphabeticallyByWordA);
+    localStorage.setItem('wordMatches', JSON.stringify(this.wordMatches));
   }
 }

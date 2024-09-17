@@ -7,7 +7,7 @@ Erstelle eine Wortschatz-Trainer Applikation mit folgenden Funktionalitäten, we
 - [x] Button um Beispieldaten einzufüllen
 - [x] Button um alles zurückzusetzen
 - [x] Bonus: Die Liste der Worpaare können für beide Sprachen sortiert werden
-- [ ] Bonus: Wortliste persistieren (LocalStorage)
+- [x] Bonus: Wortliste persistieren (LocalStorage)
 
 ## Trainieren
 - [ ] Es wird zufällig die eine oder andere Sprache abgefragt
