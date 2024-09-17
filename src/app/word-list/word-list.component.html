@@ -1,25 +1,17 @@
-<form
-  class="add-word-match-form"
-  #addWordMatchForm="ngForm"
-  (ngSubmit)="onNewWordMatchSubmit(addWordMatchForm.value)"
->
-  <mat-form-field>
-    <mat-label>Neues Wort 1</mat-label>
-    <input matInput name="wordA" ngModel required />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Neues Wort 2</mat-label>
-    <input matInput name="wordB" ngModel required />
-  </mat-form-field>
-  <button mat-flat-button color="primary" type="submit">Hinzufügen</button>
-</form>
+<button mat-flat-button color="primary" (click)="addExampleData()" class="add-example-data-button">
+  Beispieldaten hinzufügen
+</button>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
   <ng-container matColumnDef="wordA">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ wordAHeader }}
     </th>
-    <td mat-cell *matCellDef="let wordMatch" [ngClass]="{ 'edit-mode': wordMatch.editMode }">
+    <td
+      mat-cell
+      *matCellDef="let wordMatch"
+      [ngClass]="{ 'edit-mode': wordMatch.editMode }"
+    >
       <mat-form-field *ngIf="wordMatch.editMode; else wordA">
         <input matInput [(ngModel)]="wordMatch.wordA" />
       </mat-form-field>
@@ -33,7 +25,11 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ wordBHeader }}
     </th>
-    <td mat-cell *matCellDef="let wordMatch" [ngClass]="{ 'edit-mode': wordMatch.editMode }">
+    <td
+      mat-cell
+      *matCellDef="let wordMatch"
+      [ngClass]="{ 'edit-mode': wordMatch.editMode }"
+    >
       <mat-form-field *ngIf="wordMatch.editMode; else wordB">
         <input matInput [(ngModel)]="wordMatch.wordB" />
       </mat-form-field>
@@ -73,3 +69,19 @@
 </table>
 
 <div style="margin-bottom: 64px"></div>
+
+<form
+  class="add-word-match-form"
+  #addWordMatchForm="ngForm"
+  (ngSubmit)="onNewWordMatchSubmit(addWordMatchForm.value)"
+>
+  <mat-form-field>
+    <mat-label>Neues Wort 1</mat-label>
+    <input matInput name="wordA" ngModel required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Neues Wort 2</mat-label>
+    <input matInput name="wordB" ngModel required />
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">Hinzufügen</button>
+</form>

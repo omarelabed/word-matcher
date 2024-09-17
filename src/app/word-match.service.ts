@@ -7,10 +7,7 @@ import { WordMatch } from './word-match';
 export class WordMatchService {
   wordMatches: WordMatch[] = [];
 
-  constructor() {
-    this.wordMatches = this.getDefaultWordMatches();
-    this.wordMatches.sort(this.sortAlphabeticallyByWordA);
-  }
+  constructor() {}
 
   getAllWordMatches(): WordMatch[] {
     return this.wordMatches;
@@ -19,7 +16,8 @@ export class WordMatchService {
   addWordMatch(wordMatch: WordMatch): void {
     if (
       this.wordMatches.some(
-        ({ wordA: a, wordB: b }) => a === wordMatch.wordA && b === wordMatch.wordB
+        ({ wordA: a, wordB: b }) =>
+          a === wordMatch.wordA && b === wordMatch.wordB
       )
     ) {
       return;
@@ -60,5 +58,10 @@ export class WordMatchService {
 
   sortAlphabeticallyByWordA(a: WordMatch, b: WordMatch): number {
     return a.wordA.localeCompare(b.wordA);
+  }
+
+  addExampleData() {
+    this.wordMatches = this.getDefaultWordMatches();
+    this.wordMatches.sort(this.sortAlphabeticallyByWordA);
   }
 }

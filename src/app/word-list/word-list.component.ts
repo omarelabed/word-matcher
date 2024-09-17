@@ -81,4 +81,11 @@ export class WordListComponent {
       return wm;
     });
   }
+
+  addExampleData() {
+    this.wordMatchService.addExampleData();
+    this.dataSource = new MatTableDataSource(
+      this.wordMatchService.getAllWordMatches()
+    );
+  }
 }
